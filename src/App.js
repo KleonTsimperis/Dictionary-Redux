@@ -4,7 +4,9 @@ import { fetchList } from './actions/actions';
 import axios from 'axios';
 import Header from './containers/Header';
 import MainContent from './components/MainContent';
+import { makeGetList } from './selectors';
 
+//@flow
 class App extends Component {
 
   componentDidMount(){
@@ -23,6 +25,16 @@ class App extends Component {
   }
 }
 
+const makeMapStateToProps = () => {
+  const getList = makeGetList();
+  const mapStateToProps = state => {
+    return {
+      list: getList(state)
+    }
+  }
+  return mapStateToProps;
+}
 
 
-export default connect()(App);
+
+export default connect(makeMapStateToProps)(App);

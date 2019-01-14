@@ -5,6 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store';
+import { saveState } from './localStorage';
+
+store.subscribe(() => {
+  saveState({
+    list: store.getState().mainReducer.list,
+    dictionaries: store.getState().mainReducer.dictionaries
+  })
+});
 
 ReactDOM.render(
   <Provider store={store}>

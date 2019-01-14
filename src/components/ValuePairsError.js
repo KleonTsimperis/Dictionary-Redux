@@ -8,10 +8,10 @@ const ValuePairsError = props =>
     {props.value}
   </button>
   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    {props.value === 1? <span className="dropdown-item" href="#">Duplicate Domain-Range values detected</span>:""}
-    {props.value === 2? <span className="dropdown-item" href="#">Fork Domain-Range values detected</span>:""}
-    {props.value === 3? <span className="dropdown-item" href="#">Cycles Domain-Range values detected</span>:""}
-    {props.value === 4? <span className="dropdown-item" href="#">Chains Domain-Range values detected</span>:""}
+    {props.value === 1? <span className="dropdown-item" href="#">Duplicate</span>:""}
+    {props.value === 2? <span className="dropdown-item" href="#">Fork</span>:""}
+    {props.value === 3? <span className="dropdown-item" href="#">Chains</span>:""}
+    {props.value === 4? <span className="dropdown-item" href="#">Cycles</span>:""}
   </div>
 </div>;
 

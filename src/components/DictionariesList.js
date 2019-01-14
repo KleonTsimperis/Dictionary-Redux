@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import DictionaryCRUD from '../containers/DictionaryCRUD';
 import './Components.css';
 import { connect } from 'react-redux';
+import { makeGetDictionaries } from '../selectors';
 
 const ListOfDictionaries = props =>
   <ul>
@@ -15,8 +16,14 @@ ListOfDictionaries.propTypes = {
   dictionaries: PropTypes.array
 };
 
-const mapStateToProps = state => ({
-  dictionaries: state.mainReducer.dictionaries
-});
+const makeMapStateToProps = () => {
+  const getDictionaries = makeGetDictionaries();
+  const mapStateToProps = state => {
+    return {
+      dictionaries: getDictionaries(state)
+    }
+  }
+  return mapStateToProps;
+}
 
-export default connect(mapStateToProps)(ListOfDictionaries);
+export default connect(makeMapStateToProps)(ListOfDictionaries);

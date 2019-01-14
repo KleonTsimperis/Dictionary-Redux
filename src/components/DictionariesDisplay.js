@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import DictionaryPairValues from './DictionaryPairValues';
 import './Components.css';
 import { connect } from 'react-redux';
-
-
+import { makeGetDictionaries } from '../selectors';
 
 const DictionariesDisplay = props =>
   <div className="displayDictionary">
@@ -18,8 +17,14 @@ DictionariesDisplay.propTypes = {
 
 };
 
-const mapStateToProps = state => ({
-  dictionaries: state.mainReducer.dictionaries
-});
+const makeMapStateToProps = () => {
+  const getDictionaries = makeGetDictionaries();
+  const mapStateToProps = state => {
+    return {
+      dictionaries:getDictionaries(state)
+    }
+  }
+  return mapStateToProps;
+}
 
-export default connect(mapStateToProps)(DictionariesDisplay);
+export default connect(makeMapStateToProps)(DictionariesDisplay);

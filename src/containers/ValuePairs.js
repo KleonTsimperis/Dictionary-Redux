@@ -18,18 +18,18 @@ const ValuePairs = props => {
       <td>{props.error3? <ValuePairsError value={3}/>:''}</td>
       <td>{props.error4? <ValuePairsError value={4}/>:''}</td>
     <td>
-    <IconButton  aria-label="Delete" onClick={() => props.editValues(props.dictionaryName, props.id)} color="primary">
-      {props.isEditingValues ? <Save />:<Edit />}
-    </IconButton>
+      <IconButton  aria-label="Delete" onClick={() => props.editValues(props.dictionaryName, props.id)} color="primary">
+        {props.isEditingValues ? <Save />:<Edit />}
+      </IconButton>
     </td>
     <td>
-    <IconButton  aria-label="Delete" onClick={() => props.removeValuePairs(props.dictionaryName, props.id)} color="secondary">
-      <DeleteIcon />
-    </IconButton>
+      <IconButton  aria-label="Delete" onClick={() => props.removeValuePairs(props.dictionaryName, props.id)} color="secondary">
+        <DeleteIcon />
+      </IconButton>
     </td>
     </tr>
   )
-  }
+}
 
 ValuePairs.propTypes = {
   id: PropTypes.string,
@@ -48,7 +48,7 @@ ValuePairs.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   removeValuePairs: (name, id) => dispatch(removeValuePairs(name, id)),
-  editValues: (name, id) => dispatch(editValues(name, id)),
+  editValues: (name, id) => dispatch(editValues({name, id})),
   handleValuePairs: (text, name, id, range) => dispatch(handleValuePairs(text, name, id, range))
 });
 

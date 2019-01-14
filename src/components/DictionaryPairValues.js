@@ -2,9 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ValuePairs from '../containers/ValuePairs';
 
-const DictionaryPairValues = props => {
-  
-  return (
+const DictionaryPairValues = props =>
     <div>
       <table>
         <thead>
@@ -25,8 +23,6 @@ const DictionaryPairValues = props => {
         </tbody>
       </table>
     </div>
-  );
-};
 
 DictionaryPairValues.propTypes = {
   dictionaryName: PropTypes.string,

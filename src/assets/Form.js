@@ -57,7 +57,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleInput: (value,name) => dispatch(handleInput(value,name)),
+  handleInput: (value,name) => dispatch(handleInput({value,name})),
   handleMultiplePairValues: () => dispatch(handleMultiplePairValues()),
   dictionarySubmitHandler: e => {
     e.preventDefault();

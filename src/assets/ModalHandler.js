@@ -16,7 +16,7 @@ const ModalHandler = props =>
       >
       <Form/>
     </Modal>
-  </div>
+  </div>;
 
 
 const mapStateToProps = state => ({

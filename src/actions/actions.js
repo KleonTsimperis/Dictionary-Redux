@@ -1,48 +1,39 @@
 import * as ACTION from './actionTypes';
+import { createAction } from 'redux-actions';
+import { validateAll } from './helpers/validateAll';
 
-export const fetchList = list => ({
-  type: ACTION.FETCHLIST,
-  list
-});
+export const closeForm                = createAction(ACTION.CLOSEFORM);
+export const fetchList                = createAction(ACTION.FETCHLIST);
+export const editValues               = createAction(ACTION.EDITVALUES);
+export const handleInput              = createAction(ACTION.HANDLEINPUT);
+export const addDictionary            = createAction(ACTION.ADDDICTIONARY);
+export const removeDictionary         = createAction(ACTION.REMOVEDICTIONARY);
+export const normalizeDictionary      = createAction(ACTION.NORMALIZEDICTIONARY);
+export const addValuesToDictionary    = createAction(ACTION.ADDVALUESTODICTIONARY);
+export const handleMultiplePairValues = createAction(ACTION.HANDLEMULTIPLEPAIRVALUES);
 
-function makeActionCreator(type, ...argNames) {
-  return function(...args) {
-    const action = { type }
-    argNames.forEach((arg, index) => {
-      action[argNames[index]] = args[index]
-    })
-    return action
+export const removeValuePairs = (name, id) => {
+  return (dispatch, getState) => {
+    let index = getState().mainReducer.dictionaries.findIndex(item => item.dictionaryName === name);
+    let dictionary = getState().mainReducer.dictionaries[index];
+    dispatch({type: ACTION.REMOVEVALUEPAIRS, payload:{id,name}})
+    validateAll(dictionary.values, name);
   }
 }
 
-const ADDDICTIONARY = 'ADDDICTIONARY';
-export const addDictionary = makeActionCreator(ADDDICTIONARY);
-
-const HANDLEINPUT = 'HANDLEINPUT';
-export const handleInput = makeActionCreator(HANDLEINPUT, 'value', 'name');
-
-// export const addDictionary = () => ({
-//   type: ACTION.ADDDICTIONARY
-// });
-
-export const closeForm = () => ({
-  type: ACTION.CLOSEFORM
-});
-
-// export const handleInput = (value,name) => ({
-//   type: ACTION.HANDLEINPUT,
-//   value,
-//   name
-// });
-
-export const handleMultiplePairValues = () => ({
-  type: ACTION.HANDLEMULTIPLEPAIRVALUES
-});
+export const showDictionary = id => {
+  return (dispatch, getState) => {
+    let index = getState().mainReducer.dictionaries.findIndex(item => item.id === id);
+    let dictionary = getState().mainReducer.dictionaries[index];
+    let name = dictionary.dictionaryName;
+    validateAll(dictionary.values, name);
+    dispatch({type: ACTION.SHOWDICTIONARY, payload:id})
+  }
+}
 
 export const dictionarySubmitHandler = () => {
   return (dispatch, getState) => {
     let index = getState().mainReducer.dictionaries.findIndex(item => item.dictionaryName === getState().mainReducer.dictionaryName);
-    console.log(index)
     let isError = false;
     const errors = {
       dictionaryNameError:"",
@@ -55,11 +46,11 @@ export const dictionarySubmitHandler = () => {
     }
     if(getState().mainReducer.domainTerm.length < 1){
       isError = true;
-      errors.domainTermError =  "Insert more than 2 characters";
+      errors.domainTermError =  "Insert 2 or more characters";
     }
     if(getState().mainReducer.rangeTerm.length < 2){
       isError = true;
-      errors.rangeTermError = "Insert more than 3 characters";
+      errors.rangeTermError = "Insert 3 or more characters";
     }
     if(isError) dispatch({type: ACTION.FORMERRORS, errors});
     if(!isError && index === -1) dispatch({type: ACTION.DICTIONARYSUBMITHANDLER});
@@ -67,42 +58,12 @@ export const dictionarySubmitHandler = () => {
   }
 }
 
-export const showDictionary = id => ({
-  type: ACTION.SHOWDICTIONARY,
-  id
-});
-
-export const removeDictionary = id => ({
-  type: ACTION.REMOVEDICTIONARY,
-  id
-});
-
-export const removeValuePairs = (name, id) => ({
-  type: ACTION.REMOVEVALUEPAIRS,
-  name,
-  id
-});
-
-export const addValuesToDictionary = id => ({
-  type: ACTION.ADDVALUESTODICTIONARY,
-  id
-});
-
-export const editValues = (name, id) => ({
-  type: ACTION.EDITVALUES,
-  name,
-  id
-});
-
 export const handleValuePairs = (text, name, id, range) => {
-  // console.log(text,name,id,range) // the domain/range text, dictionary name, row id,
-
   return (dispatch, getState) => {
     let index = getState().mainReducer.dictionaries.findIndex(item => item.dictionaryName === name);
-
     if (range === "domain") dispatch({type: ACTION.HANDLEDOMAIN, text, name, id});
     if (range === "range") dispatch({type: ACTION.HANDLERANGE, text, name, id});
-    var dic = getState().mainReducer.dictionaries[index];
-    console.log(dic)
+    let dictionary = getState().mainReducer.dictionaries[index];
+    validateAll(dictionary.values, name);
   }
 }
