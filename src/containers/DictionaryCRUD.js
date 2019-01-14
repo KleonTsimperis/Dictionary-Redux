@@ -9,8 +9,6 @@ import { showDictionary, removeDictionary, addValuesToDictionary, normalizeDicti
 import { makeGetDictionaries } from '../selectors';
 
 const DictionaryCRUD = props => {
-  const permitValidation = props => props.values.every(entry => entry.error1 === false && entry.error2 === false && entry.error3 === false && entry.error4 === false);
-  const permit = permitValidation; // Note: workaround to remove warning. Inserting disabled={!props.permitValidation} at line 24 will throw a warning of unused variable
   const { classes } = props;
   return(
     <li className={classes.container}>
@@ -21,7 +19,7 @@ const DictionaryCRUD = props => {
       <Button className={classes.item2} variant="contained" color="primary" size="large" onClick={()=>props.addValuesToDictionary(props.id)}>
           Add Values
       </Button>
-      <Button className={classes.item2} disabled={!permit} variant="contained" color="primary" size="large" onClick={()=>props.normalizeDictionary(props.id)}>
+      <Button className={classes.item2} disabled={!props.values.every(entry => entry.error1 === false && entry.error2 === false && entry.error3 === false && entry.error4 === false)} variant="contained" color="primary" size="large" onClick={()=>props.normalizeDictionary(props.id)}>
           Normalize
       </Button>
       <Button className={classes.item3} variant="contained" color="secondary" size="large" onClick={()=>props.removeDictionary(props.id)}>
