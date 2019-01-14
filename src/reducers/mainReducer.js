@@ -14,10 +14,8 @@ const initialState = {
       domainTermError:"",
       rangeTerm:"",
       rangeTermError:"",
-      snackBarOpen:false,
       multiplePairValues:true,
       isAddingValuesAfterCreation:false,
-      snackBarMessage:""
 }
 
 const mainReducer = (state = initialState, action) => {
@@ -44,6 +42,7 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         openForm:true,
+        dictionaryName:"",
         isAddingValuesAfterCreation:false,
         dictionaryNameError:"",
         domainTermError:"",

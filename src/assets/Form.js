@@ -12,15 +12,15 @@ const Form = props =>
     <fieldset>
       <label><strong>Dictionary Name</strong></label>
       {props.formState.isAddingValuesAfterCreation ? <h2>{props.formState.dictionaryName}</h2> :
-      <input type="text" id="name" name="dictionaryName" value={props.formState.dictionaryName} onChange={e => props.handleInput(e.target.value, e.target.name)} autoFocus/>}
+      <input type="text" id="name" name="dictionaryName" className="indent" value={props.formState.dictionaryName} onChange={e => props.handleInput(e.target.value, e.target.name)} autoFocus/>}
       <label className="errorLabel" style={{color:"red"}}>{props.formState.dictionaryName === "" ? props.formState.dictionaryNameError : ""}</label>
 
       <label htmlFor="email">Domain Term</label>
-      <input type="text" id="email" name="domainTerm" value={props.formState.domainTerm} onChange={e => props.handleInput(e.target.value, e.target.name)}/>
+      <input type="text" id="email" name="domainTerm" className="indent" value={props.formState.domainTerm} onChange={e => props.handleInput(e.target.value, e.target.name)}/>
       <label className="errorLabel" style={{color:"red"}}>{props.formState.domainTerm.length <= 1 ? props.formState.domainTermError : ""}</label>
 
       <label htmlFor="password">Range Term</label>
-      <input type="text" id="password" name="rangeTerm" value={props.formState.rangeTerm} onChange={e => props.handleInput(e.target.value, e.target.name)}/>
+      <input type="text" id="password" name="rangeTerm" className="indent" value={props.formState.rangeTerm} onChange={e => props.handleInput(e.target.value, e.target.name)}/>
       <label className="errorLabel" style={{color:"red"}}>{props.formState.rangeTerm.length <= 2 ? props.formState.rangeTermError : ""}</label>
 
       <label>

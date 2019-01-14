@@ -21,6 +21,14 @@ export const validateChains = (array, name) => {
 
   for (let i = 0; i < array.length; i++){
     for (let j = 0; j < array.length; j++){
+      if ((array[i].domainTerm !== array[j].rangeTerm && array[i].rangeTerm !== array[j].domainTerm && i !== j) || array.length <= 1){
+        store.dispatch({type:ACTION.ERROR3CLEAR, name, i})
+      }
+    }
+  }
+
+  for (let i = 0; i < array.length; i++){
+    for (let j = 0; j < array.length; j++){
       if ( (array[i].rangeTerm === array[j].domainTerm || array[j].domainTerm === array[i].rangeTerm) && i !== j) {
         store.dispatch({type:ACTION.ERROR3, name, i, j})
       }
