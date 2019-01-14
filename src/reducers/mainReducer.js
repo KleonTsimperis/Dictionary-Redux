@@ -6,45 +6,7 @@ import { errorClear } from './helpers/errorClear';
 
 const initialState = {
       list:[],
-      dictionaries:[
-        {
-           dictionaryName:'Dictionary',
-           isShowing:false,
-           id:'a',
-           values:[
-             {
-             id:'12^$^&',
-             domainTerm: '111',
-             rangeTerm: 'ddd',
-             isEditingValues: false,
-             error1: false,
-             error2: false,
-             error3: false,
-             error4: false
-           },
-           {
-           id:'*&^&!$$',
-           domainTerm: 'ddd',
-           rangeTerm: '111',
-           isEditingValues: false,
-           error1: false,
-           error2: false,
-           error3: false,
-           error4: false
-         },
-         {
-         id:'1233222',
-         domainTerm: '111',
-         rangeTerm: 'dd',
-         isEditingValues: false,
-         error1: false,
-         error2: false,
-         error3: false,
-         error4: false
-       },
-         ]
-
-    }],
+      dictionaries:[],
       openForm:false,
       dictionaryName:"",
       dictionaryNameError:"",

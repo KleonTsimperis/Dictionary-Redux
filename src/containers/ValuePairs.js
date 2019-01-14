@@ -7,17 +7,18 @@ import Edit from '@material-ui/icons/Edit';
 import Save from '@material-ui/icons/Save';
 import { connect } from 'react-redux';
 import { removeValuePairs, editValues, handleValuePairs } from '../actions/actions';
+import '../components/Components.css';
 
 const ValuePairs = props => {
   return(
     <tr key={props.id}>
-      <td>{props.isEditingValues? <input type="text" value={props.domainTerm} onChange={e => props.handleValuePairs(e.target.value, props.dictionaryName, props.id, "domain")}/> : <span>{props.domainTerm}</span>}</td>
-      <td>{props.isEditingValues? <input type="text" value={props.rangeTerm} onChange={e => props.handleValuePairs(e.target.value, props.dictionaryName, props.id, "range")}/> : <span>{props.rangeTerm}</span>}</td>
+      <td>{props.isEditingValues? <input className="indent" type="text" value={props.domainTerm} onChange={e => props.handleValuePairs(e.target.value, props.dictionaryName, props.id, "domain")}/> : <span>{props.domainTerm}</span>}</td>
+      <td>{props.isEditingValues? <input className="indent" type="text" value={props.rangeTerm} onChange={e => props.handleValuePairs(e.target.value, props.dictionaryName, props.id, "range")}/> : <span>{props.rangeTerm}</span>}</td>
       <td>{props.error1? <ValuePairsError value={1}/>:''}</td>
       <td>{props.error2? <ValuePairsError value={2}/>:''}</td>
       <td>{props.error3? <ValuePairsError value={3}/>:''}</td>
       <td>{props.error4? <ValuePairsError value={4}/>:''}</td>
-    <td>
+    <td style={{marginLeft:"20px"}}>
       <IconButton  aria-label="Delete" onClick={() => props.editValues(props.dictionaryName, props.id)} color="primary">
         {props.isEditingValues ? <Save />:<Edit />}
       </IconButton>

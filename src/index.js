@@ -9,8 +9,8 @@ import { saveState } from './localStorage';
 
 store.subscribe(() => {
   saveState({
-    list: store.getState().mainReducer.list,
-    dictionaries: store.getState().mainReducer.dictionaries
+    list: store.getState().list,
+    dictionaries: store.getState().dictionaries
   })
 });
 

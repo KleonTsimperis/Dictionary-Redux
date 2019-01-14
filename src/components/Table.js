@@ -1,12 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Components.css';
 import { connect } from 'react-redux';
 import Spinner from '../assets/spinner';
 import { makeGetList } from '../selectors';
 
-const Table = props => {
-  if (props.list.length === 0) return <Spinner/>
+type Props = {
+  list: Array<any>
+}
+
+type State = {
+  list: Array<any>
+}
+
+const Table = ({list}: Props) => {
+  if (list.length === 0) return <Spinner/>
   return (
     <table className="list" style={{width:"95%", margin:"auto", marginTop:"1rem"}}>
       <thead>
@@ -20,7 +27,7 @@ const Table = props => {
         </tr>
       </thead>
       <tbody>
-        {props.list.map(item=>
+        {list.map(item=>
           <tr key={item.id}>
           <td>{item.product}</td>
           <td>{item.color}</td>
@@ -31,13 +38,10 @@ const Table = props => {
     </table>
     )}
 
-Table.propTypes = {
-  list: PropTypes.array
-}
 
-const makeMapStateToProps = () => {
-  const getList = makeGetList();
-  const mapStateToProps = state => {
+const makeMapStateToProps = (): function => {
+  const getList: function = makeGetList();
+  const mapStateToProps: function = (state: State) => {
     return {
       list: getList(state)
     }

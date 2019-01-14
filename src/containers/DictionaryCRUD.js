@@ -15,16 +15,16 @@ const DictionaryCRUD = props => {
   return(
     <li className={classes.container}>
       <h3 className={classes.item1}>{props.dictionaryName}</h3>
-      <Button className={classes.item2} variant="contained" color="primary" size="small" onClick={()=>props.showDictionary(props.id)}>
+      <Button className={classes.item2} variant="contained" color="primary" size="large" onClick={()=>props.showDictionary(props.id)}>
           Display
       </Button>
-      <Button className={classes.item2} variant="contained" color="primary" size="small" onClick={()=>props.addValuesToDictionary(props.id)}>
+      <Button className={classes.item2} variant="contained" color="primary" size="large" onClick={()=>props.addValuesToDictionary(props.id)}>
           Add Values
       </Button>
-      <Button className={classes.item2} disabled={!permit} variant="contained" color="primary" size="small" onClick={()=>props.normalizeDictionary(props.id)}>
+      <Button className={classes.item2} disabled={!permit} variant="contained" color="primary" size="large" onClick={()=>props.normalizeDictionary(props.id)}>
           Normalize
       </Button>
-      <Button className={classes.item3} variant="contained" color="secondary" size="small" onClick={()=>props.removeDictionary(props.id)}>
+      <Button className={classes.item3} variant="contained" color="secondary" size="large" onClick={()=>props.removeDictionary(props.id)}>
           <DeleteIcon className={classes.item4} />
       </Button>
     </li>

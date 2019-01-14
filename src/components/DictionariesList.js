@@ -1,26 +1,31 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import DictionaryCRUD from '../containers/DictionaryCRUD';
 import './Components.css';
 import { connect } from 'react-redux';
 import { makeGetDictionaries } from '../selectors';
 
-const ListOfDictionaries = props =>
+type Props = {
+  dictionaries: Array<any>
+}
+
+type State = {
+  dictionaries: Array<any>
+}
+
+const ListOfDictionaries = ({dictionaries}: Props) =>
   <ul>
-    {props.dictionaries.map(dictionary =>
+    {dictionaries.map(dictionary =>
       <DictionaryCRUD key={dictionary.id} {...dictionary} />
     )}
   </ul>;
 
-ListOfDictionaries.propTypes = {
-  dictionaries: PropTypes.array
-};
 
-const makeMapStateToProps = () => {
-  const getDictionaries = makeGetDictionaries();
-  const mapStateToProps = state => {
+const makeMapStateToProps = (): function => {
+  const getDictionaries: function = makeGetDictionaries();
+  const mapStateToProps: function = (state): State => {
     return {
-      dictionaries: getDictionaries(state)
+      dictionaries:getDictionaries(state)
     }
   }
   return mapStateToProps;

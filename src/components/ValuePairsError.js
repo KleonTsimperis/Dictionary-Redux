@@ -1,22 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import './Components.css';
 
-const ValuePairsError = props =>
+type Props = {
+  values: number
+}
 
-<div className="dropdown">
-  <button className={props.value <= 2 ? "btn btn-warning dropdown-toggle btn-sm" : "btn btn-danger dropdown-toggle btn-sm"} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    {props.value}
-  </button>
-  <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    {props.value === 1? <span className="dropdown-item" href="#">Duplicate</span>:""}
-    {props.value === 2? <span className="dropdown-item" href="#">Fork</span>:""}
-    {props.value === 3? <span className="dropdown-item" href="#">Chains</span>:""}
-    {props.value === 4? <span className="dropdown-item" href="#">Cycles</span>:""}
-  </div>
-</div>;
+const ValuePairsError = ({value}: Props) =>
 
-ValuePairsError.propTypes = {
-  value:PropTypes.number
-};
+  <div className="container">
+    <button className="item error">
+      {value}
+    </button>
+    <div className="item">
+      {value === 1? <div>Duplicate</div>:""}
+      {value === 2? <div>Fork</div>:""}
+      {value === 3? <div>Chains</div>:""}
+      {value === 4? <div>Cycles</div>:""}
+    </div>
+  </div>;
 
 export default ValuePairsError;

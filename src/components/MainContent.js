@@ -6,7 +6,7 @@ import DictionariesList from './DictionariesList';
 import DictionariesDisplay from './DictionariesDisplay';
 
 const MainContent = props =>
-    <Grid container justify="center">
+    <Grid container justify="center" alignItems="flex-start">
       <Grid item xs={12} md={3} >
         <Table />
         <ModalHandler />

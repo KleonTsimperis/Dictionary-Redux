@@ -6,7 +6,8 @@ import Header from './containers/Header';
 import MainContent from './components/MainContent';
 import { makeGetList } from './selectors';
 
-//@flow
+
+
 class App extends Component {
 
   componentDidMount(){

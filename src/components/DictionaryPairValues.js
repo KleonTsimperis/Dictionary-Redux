@@ -1,37 +1,31 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import ValuePairs from '../containers/ValuePairs';
+import './Components.css';
 
-const DictionaryPairValues = props =>
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th colSpan="8" className="text-center">Dictionary {props.dictionaryName} properties</th>
-          </tr>
-          <tr>
-            <th>Domain Term</th>
-            <th>Range Term</th>
-            <th colSpan="4" style={{width:"10%"}}>Errors</th>
-            <th colSpan="2" style={{width:"10%"}}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-        {props.values.map(item =>
-          <ValuePairs key={item.id} {...item} dictionaryName={props.dictionaryName}/>
-        )}
-        </tbody>
-      </table>
-    </div>
+type Props = {
+  dictionaryName: string,
+  values: Array<any>
+}
 
-DictionaryPairValues.propTypes = {
-  dictionaryName: PropTypes.string,
-  values: PropTypes.array,
-  editingDomainTerm: PropTypes.string,
-  editingRangeTerm: PropTypes.string,
-  editValues: PropTypes.func,
-  inpute: PropTypes.func,
-  removeValuePairs: PropTypes.func
-};
+const DictionaryPairValues = ({dictionaryName, values}: Props) =>
+  <table>
+    <thead>
+      <tr>
+        <th colSpan="8" className="text-center">Dictionary {dictionaryName} properties</th>
+      </tr>
+      <tr>
+        <th>Domain Term</th>
+        <th>Range Term</th>
+        <th colSpan="4" style={{width:"10%"}}>Errors</th>
+        <th colSpan="2" style={{width:"10%"}}>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {values.map(item =>
+      <ValuePairs key={item.id} {...item} dictionaryName={dictionaryName}/>
+    )}
+    </tbody>
+  </table>
 
 export default DictionaryPairValues;
