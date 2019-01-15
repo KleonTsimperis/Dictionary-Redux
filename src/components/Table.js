@@ -13,7 +13,7 @@ type State = {
 }
 
 const Table = ({list}: Props) => {
-  if (list.length === 0) return <Spinner/>
+  if (list === undefined || list.length === 0) return <Spinner/>
   return (
     <table className="list" style={{width:"95%", margin:"auto", marginTop:"1rem"}}>
       <thead>

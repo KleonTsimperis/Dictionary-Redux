@@ -6,13 +6,12 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store';
 import { saveState } from './localStorage';
+import throttle from 'lodash/throttle';
 
-store.subscribe(() => {
-  saveState({
-    list: store.getState().list,
-    dictionaries: store.getState().dictionaries
-  })
-});
+
+store.subscribe(throttle(() => {
+  saveState(store.getState());
+}, 1000));
 
 ReactDOM.render(
   <Provider store={store}>
