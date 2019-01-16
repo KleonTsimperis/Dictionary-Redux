@@ -3,16 +3,9 @@ import './Components.css';
 import { connect } from 'react-redux';
 import Spinner from '../assets/spinner';
 import { makeGetList } from '../selectors';
+import { List, State } from '../flow';
 
-type Props = {
-  list: Array<any>
-}
-
-type State = {
-  list: Array<any>
-}
-
-const Table = ({list}: Props) => {
+const Table = ({list}: List) => {
   if (list === undefined || list.length === 0) return <Spinner/>
   return (
     <table className="list" style={{width:"95%", margin:"auto", marginTop:"1rem"}}>
@@ -39,9 +32,9 @@ const Table = ({list}: Props) => {
     )}
 
 
-const makeMapStateToProps = (): function => {
-  const getList: function = makeGetList();
-  const mapStateToProps: function = (state: State) => {
+const makeMapStateToProps = (): State => {
+  const getList = makeGetList();
+  const mapStateToProps = (state: State): State => {
     return {
       list: getList(state)
     }

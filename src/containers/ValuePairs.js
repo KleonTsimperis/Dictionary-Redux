@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ValuePairsError from '../components/ValuePairsError';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -9,7 +8,18 @@ import { connect } from 'react-redux';
 import { removeValuePairs, editValues, handleValuePairs } from '../actions/actions';
 import '../components/Components.css';
 
-const ValuePairs = props => {
+type Props = {
+  isEditingValues: boolean,
+  error1: boolean,
+  error2: boolean,
+  error3: boolean,
+  error4: boolean,
+  handleValuePairs: () => void,
+  editValues: () => void,
+  removeValuePairs: () => void,
+}
+
+const ValuePairs = (props: Props) => {
   return(
     <tr key={props.id}>
       <td>{props.isEditingValues? <input className="indent" type="text" value={props.domainTerm} onChange={e => props.handleValuePairs(e.target.value, props.dictionaryName, props.id, "domain")}/> : <span>{props.domainTerm}</span>}</td>
@@ -31,21 +41,6 @@ const ValuePairs = props => {
     </tr>
   )
 }
-
-ValuePairs.propTypes = {
-  id: PropTypes.string,
-  isEditingValues: PropTypes.bool,
-  editingDomainTerm: PropTypes.string,
-  editingRangeTerm: PropTypes.string,
-  inputeDomain: PropTypes.func,
-  inputeRange: PropTypes.func,
-  domainTerm: PropTypes.string,
-  rangeTerm: PropTypes.string,
-  error1: PropTypes.bool,
-  error2: PropTypes.bool,
-  error3: PropTypes.bool,
-  error4: PropTypes.bool
-};
 
 const mapDispatchToProps = dispatch => ({
   removeValuePairs: (name, id) => dispatch(removeValuePairs(name, id)),

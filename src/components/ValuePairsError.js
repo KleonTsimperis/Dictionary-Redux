@@ -1,12 +1,7 @@
 import React from 'react';
 import './Components.css';
 
-type Props = {
-  values: number
-}
-
-const ValuePairsError = ({value}: Props) =>
-
+const ValuePairsError = ({value}: number) =>
   <div className="container">
     <button className="item error">
       {value}

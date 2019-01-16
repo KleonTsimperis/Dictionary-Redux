@@ -4,28 +4,20 @@ import DictionaryPairValues from './DictionaryPairValues';
 import './Components.css';
 import { connect } from 'react-redux';
 import { makeGetDictionaries } from '../selectors';
+import { State } from '../flow';
 
-type Props = {
-  dictionaries: Array<any>
-}
 
-type State = {
-  dictionaries: Array<any>
-}
-
-const DictionariesDisplay = ({dictionaries}: Props) =>
+const DictionariesDisplay = ({dictionaries}: State) =>
   <div className="displayDictionary">
     {dictionaries.filter(dictionary => dictionary.isShowing===true).map(dictionary =>
       <DictionaryPairValues key={dictionary.id} {...dictionary}/>
     )}
-  </div>
+  </div>;
 
 
-
-
-const makeMapStateToProps = (): function => {
-  const getDictionaries: function = makeGetDictionaries();
-  const mapStateToProps: function = (state): State => {
+const makeMapStateToProps = (): State => {
+  const getDictionaries = makeGetDictionaries();
+  const mapStateToProps = (state: State): State => {
     return {
       dictionaries:getDictionaries(state)
     }

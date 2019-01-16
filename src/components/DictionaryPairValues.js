@@ -2,10 +2,11 @@
 import React from 'react';
 import ValuePairs from '../containers/ValuePairs';
 import './Components.css';
+import { DictionaryValues } from '../flow';
 
 type Props = {
-  dictionaryName: string,
-  values: Array<any>
+  dictionaryName: string | number,
+  values: DictionaryValues
 }
 
 const DictionaryPairValues = ({dictionaryName, values}: Props) =>

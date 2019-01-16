@@ -7,8 +7,7 @@ import MainContent from './components/MainContent';
 import { makeGetList } from './selectors';
 
 
-
-class App extends Component {
+class App extends Component{
 
   componentDidMount(){
     axios.get('/list.json')

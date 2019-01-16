@@ -6,7 +6,11 @@ import '../components/Components.css';
 import { connect } from 'react-redux';
 import { handleInput, dictionarySubmitHandler, handleMultiplePairValues } from '../actions/actions';
 
-const Form = props =>
+type Props = {
+  dictionarySubmitHandler: undefined
+}
+
+const Form = (props: Props) =>
 
   <form onSubmit={props.dictionarySubmitHandler} autoComplete="off">
     <fieldset>

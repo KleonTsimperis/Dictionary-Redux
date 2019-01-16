@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -7,8 +6,17 @@ import { styles } from './styles/dictionarycrud';
 import { connect } from 'react-redux';
 import { showDictionary, removeDictionary, addValuesToDictionary, normalizeDictionary} from '../actions/actions';
 import { makeGetDictionaries } from '../selectors';
+import { State, DictionaryValues } from '../flow';
 
-const DictionaryCRUD = props => {
+type Props = {
+  showDictionary: () => State,
+  addValuesToDictionary: () => State,
+  normalizeDictionary: () => State,
+  removeDictionary: () => State,
+  values: DictionaryValues
+}
+
+const DictionaryCRUD = (props: Props) => {
   const { classes } = props;
   return(
     <li className={classes.container}>
@@ -30,17 +38,9 @@ const DictionaryCRUD = props => {
 };
 
 
-DictionaryCRUD.propTypes = {
-  classes: PropTypes.object,
-  showDictionary: PropTypes.func,
-  addValuesToDictionary: PropTypes.func,
-  normalizeDictionary: PropTypes.func,
-  removeDictionary: PropTypes.func
-};
-
-const makeMapStateToProps = () => {
+const makeMapStateToProps = (): State => {
   const getDictionaries = makeGetDictionaries();
-  const mapStateToProps = state => {
+  const mapStateToProps = (state: State): State => {
     return {
       dictionaries: getDictionaries(state)
     }

@@ -5,7 +5,7 @@ import ModalHandler from '../assets/ModalHandler';
 import DictionariesList from './DictionariesList';
 import DictionariesDisplay from './DictionariesDisplay';
 
-const MainContent = props =>
+const MainContent = () =>
     <Grid container justify="center" alignItems="flex-start">
       <Grid item xs={12} md={3} >
         <Table />

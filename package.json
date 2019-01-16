@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build": "react-scripts build",
+    "build": "babel src/ -d lib/",
+    "prepublish": "yarn run build",
     "flow": "flow"
   },
   "eslintConfig": {

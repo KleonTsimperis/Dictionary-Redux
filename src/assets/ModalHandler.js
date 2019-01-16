@@ -4,8 +4,15 @@ import Form from './Form';
 import '../components/Components.css';
 import { connect } from 'react-redux';
 import { closeForm } from '../actions/actions';
+import { State } from '../flow';
 
-const ModalHandler = props =>
+
+type Props = {
+  openForm: boolean,
+  closeForm: () => void,
+}
+
+const ModalHandler = (props: Props) =>
 
   <div>
     <Modal
@@ -19,7 +26,7 @@ const ModalHandler = props =>
   </div>;
 
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: State): State => ({
   openForm: state.mainReducer.openForm
 });
 
