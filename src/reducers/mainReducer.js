@@ -1,8 +1,11 @@
+
 import * as ACTION from '../actions/actionTypes';
 import uuid from 'uuid';
 import { valuesHandler } from './helpers/valuesHandler';
 import { errorSet } from './helpers/errorSet';
 import { errorClear } from './helpers/errorClear';
+import { State, Action } from '../flow';
+
 
 const initialState = {
       list:[],
@@ -18,7 +21,7 @@ const initialState = {
       isAddingValuesAfterCreation:false,
 }
 
-const mainReducer = (state = initialState, action) => {
+const mainReducer = (state: State = initialState, action: Action): State => {
   switch(action.type){
     case ACTION.FETCHLIST:
       return {...state, list: action.payload}

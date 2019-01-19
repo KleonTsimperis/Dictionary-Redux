@@ -6,13 +6,13 @@ import { styles } from './styles/dictionarycrud';
 import { connect } from 'react-redux';
 import { showDictionary, removeDictionary, addValuesToDictionary, normalizeDictionary} from '../actions/actions';
 import { makeGetDictionaries } from '../selectors';
-import { State, DictionaryValues } from '../flow';
+import { State, DictionaryValues, Dictionaries } from '../flow';
 
 type Props = {
-  showDictionary: () => State,
-  addValuesToDictionary: () => State,
-  normalizeDictionary: () => State,
-  removeDictionary: () => State,
+  showDictionary: () => Dictionaries,
+  addValuesToDictionary: () => Dictionaries,
+  normalizeDictionary: () => Dictionaries,
+  removeDictionary: () => Dictionaries,
   values: DictionaryValues
 }
 

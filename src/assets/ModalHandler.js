@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Modal from 'react-responsive-modal';
 import Form from './Form';
 import '../components/Components.css';

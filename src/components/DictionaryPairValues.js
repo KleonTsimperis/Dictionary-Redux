@@ -1,4 +1,4 @@
-// @flow
+
 import React from 'react';
 import ValuePairs from '../containers/ValuePairs';
 import './Components.css';

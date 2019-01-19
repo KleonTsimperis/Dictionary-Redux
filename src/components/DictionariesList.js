@@ -1,18 +1,19 @@
-// @flow
+
 import React from 'react';
 import DictionaryCRUD from '../containers/DictionaryCRUD';
 import './Components.css';
 import { connect } from 'react-redux';
 import { makeGetDictionaries } from '../selectors';
-import { State } from '../flow';
+import { State, Dictionaries } from '../flow';
 
 
-const ListOfDictionaries = ({dictionaries}: State) =>
+const ListOfDictionaries = ({ dictionaries }: Dictionaries) => (
   <ul>
-    {dictionaries.map(dictionary =>
+    {dictionaries.map(dictionary => (
       <DictionaryCRUD key={dictionary.id} {...dictionary} />
-    )}
-  </ul>;
+    ))}
+  </ul>
+);
 
 
 const makeMapStateToProps = (): State => {

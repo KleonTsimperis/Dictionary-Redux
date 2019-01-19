@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ValuePairsError from '../components/ValuePairsError';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,15 +10,19 @@ import { removeValuePairs, editValues, handleValuePairs } from '../actions/actio
 import '../components/Components.css';
 
 type Props = {
+  id: string,
+  dictionaryName: string | number,
+  domainTerm: string | number,
+  rangeTerm: string | number,
   isEditingValues: boolean,
   error1: boolean,
   error2: boolean,
   error3: boolean,
   error4: boolean,
-  handleValuePairs: () => void,
-  editValues: () => void,
-  removeValuePairs: () => void,
-}
+  handleValuePairs: (event: string | number, name: string | number, id: string, section: string | number) => void,
+  editValues: (name: string | number, id: string ) => void,
+  removeValuePairs: (name: string | number, id: string ) => void
+};
 
 const ValuePairs = (props: Props) => {
   return(
